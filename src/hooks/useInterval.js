@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 import { useEffect, useRef } from 'react';
 
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
+function useInterval(callback: function, delay: ?number) {
+  const savedCallback: {current: Function} = useRef();
 
   useEffect(() => {
     savedCallback.current = callback;

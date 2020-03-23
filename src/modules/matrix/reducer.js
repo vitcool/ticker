@@ -1,5 +1,3 @@
-// @flow
-
 import { handleActions } from 'redux-actions';
 
 import { generateInitialMatrix, generateNewMatrix } from 'helpers/matrix';
@@ -8,8 +6,8 @@ import { TABLE_SIZE } from 'config';
 
 import { tick } from './actions';
 
-type State = {
-  data: Array<Array<String>>,
+export type State = {
+  data: Array<Array<number>>,
 };
 
 const defaultState: State = {
@@ -18,7 +16,7 @@ const defaultState: State = {
 
 export default handleActions(
   {
-    [tick]: state => {
+    [tick]: (state: State) => {
       return {
         data: generateNewMatrix(state.data),
       };

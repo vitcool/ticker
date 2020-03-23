@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -12,7 +10,7 @@ import styles from './index.module.scss';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(rootReducer, composeEnhancers());
+const store: Function = createStore(rootReducer, composeEnhancers());
 
 function App() {
   return (

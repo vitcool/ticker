@@ -1,4 +1,4 @@
-export const generateInitialMatrix = size => {
+export const generateInitialMatrix = (size: number) => {
   const result = [];
   for (let i = 0; i < size; i++) {
     result[i] = [];
@@ -9,7 +9,7 @@ export const generateInitialMatrix = size => {
   return result;
 };
 
-const calculateLiveNeighbours = (currentMatrix, rowIndex, colIndex) => {
+const calculateLiveNeighbours: function = (currentMatrix: Array<Array<number>>, rowIndex: number, colIndex: number) => {
   const prevRowIndex = rowIndex - 1;
   const prevColIndex = colIndex - 1;
   const nextRowIndex = rowIndex + 1;
@@ -58,7 +58,7 @@ const calculateLiveNeighbours = (currentMatrix, rowIndex, colIndex) => {
   return liveNeighbours;
 };
 
-export const generateNewMatrix = currentMatrix => {
+export const generateNewMatrix: function = (currentMatrix: Array<Array<number>>) => {
   const newMatrix = currentMatrix.map((row, indexRow) => row.map(
     (currentValue, indexCol) => {
       const isLive = currentValue === 1;

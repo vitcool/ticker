@@ -1,5 +1,3 @@
 import { createAction } from 'redux-actions';
 
-type Action = { type: 'Tick'};
-
-export const tick:Action = createAction('TICK');
+export const tick: Function = createAction('TICK');

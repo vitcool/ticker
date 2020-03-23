@@ -1,17 +1,23 @@
-// @flow
-
 import React from 'react';
 
 import styles from './index.module.scss';
 
 type Props = {
-  isLive: Boolean,
+  isLive: boolean,
 };
 
 const Cell = (props: Props) => {
   const { isLive } = props;
 
-  return <td className={`${styles.cell} ${isLive ? styles.active : ''}`} />;
+  return (
+    <>
+      {isLive ? (
+        <td className={styles.activeCell} />
+      ) : (
+        <td className={styles.cell} />
+      )}
+    </>
+  );
 };
 
 export default Cell;

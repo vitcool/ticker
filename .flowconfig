@@ -1,4 +1,8 @@
 [ignore]
+.*/src/index\.js
+.*\.test\.js
+.*\.scss
+.*/node_modules/*
 
 [include]
 
@@ -7,7 +11,12 @@
 [lints]
 
 [options]
+all=true
 module.name_mapper='^\([^\.].*\)$' -> '<PROJECT_ROOT>/src/\1'
+module.file_ext=.js
 module.file_ext=.scss
+module.file_ext=.css
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/flowconfig.mock-module.js'
 
 [strict]
+
