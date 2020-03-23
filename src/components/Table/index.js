@@ -7,7 +7,7 @@ import useInterval from 'hooks/useInterval';
 import { getMatrixData } from 'modules/matrix/selectors';
 import { tick } from 'modules/matrix/actions';
 
-import { TABLE_SIZE, TICK_TIME } from 'config';
+import { TICK_TIME } from 'config';
 
 import styles from './index.module.scss';
 
@@ -19,20 +19,20 @@ const Table = () => {
     dispatch(tick());
   }, TICK_TIME);
 
-  const rows = [];
-  for (let rowIndex = 0; rowIndex < TABLE_SIZE; rowIndex++) {
-    const cells = [];
-    for (let colIndex = 0; colIndex < TABLE_SIZE; colIndex++) {
-      const isLive = Boolean(matrixData[rowIndex][colIndex]);
-      cells.push(<Cell isLive={isLive} key={`${rowIndex}-${colIndex}`} />);
-    }
-    rows.push(<tr key={rowIndex}>{cells}</tr>);
-  }
-
   return (
     <div className={styles.tableWrapper}>
       <table>
-        <tbody>{rows}</tbody>
+        <tbody>
+          {matrixData.map((rows, rowIndex) => (
+            <tr key={rowIndex}>
+              {rows.map((row, colIndex) => {
+                const isLive = Boolean(matrixData[rowIndex][colIndex]);
+
+                return <Cell isLive={isLive} key={`${rowIndex}-${colIndex}`} />;
+              })}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
